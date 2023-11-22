@@ -9,27 +9,29 @@ const Example1 = () => {
   const [pageNum, setPageNum] = useState(1)
   const { loading, isError, error, result, hasNextPage } = usePosts(pageNum)
 
-  if (isError) return <p className="center"> Error : {error.message}</p>
-
+  
   const intObserver = useRef();
-
+  
   const lastPostRef = useCallback((post) => {
     if(loading) return;
 
     if(intObserver.current) intObserver.current.disconnect();
 
     intObserver.current = new IntersectionObserver((post) => {
-      if (post[0].isIntersecting && hasNextPage)
+      if (post[0].isIntersecting && hasNextPage){
         console.log("we are near the last post")
-      setPageNum(prev => prev + 1);
+        setPageNum(prev => prev + 1);
+      }
     })
 
     if(post) intObserver.current.observe(post)
   }, [loading, hasNextPage])
 
+  if (isError) return <p className="center"> Error : {error.message}</p>
+
   const content = result.map((post, i) => {
     if(result.length === i + 1) {
-
+      return <Post ref={lastPostRef} key={post.id} post={post}/>
     }
     return <Post key={post.id} post={post}/>
   })
