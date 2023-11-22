@@ -17,6 +17,22 @@ const Example1 = () => {
 
     if(intObserver.current) intObserver.current.disconnect();
 
+    const confirmLoad = () => {
+      confirmAlert({
+        title: "Confirm Load More",
+        message: "Are you sure to load more posts?",
+        buttons:[
+          {
+            label: "Yes",
+            onClick: () => {
+               setPageNum((prev) => prev + 1)
+            }
+          },
+          {label: "No"}
+        ]
+      })
+    }
+
     intObserver.current = new IntersectionObserver((post) => {
       if (post[0].isIntersecting && hasNextPage){
         console.log("we are near the last post")
