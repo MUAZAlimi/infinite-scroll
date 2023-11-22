@@ -15,7 +15,7 @@ const Example1 = () => {
 
   const content = result.map((post, i) => {
     if(result.length === i + 1) {
-
+      
     }
     return <Post key={post.id} post={post}/>
   })
