@@ -5,7 +5,7 @@ import { confirmAlert } from "react-confirm-alert"
 import  'react-confirm-alert/src/react-confirm-alert.css'
 import Post from "./Post"
 
-const Example1 = () => {
+const Example2 = () => {
   const [pageNum, setPageNum] = useState(1)
   const { loading, isError, error, result, hasNextPage } = usePosts(pageNum)
 
@@ -73,4 +73,4 @@ const Example1 = () => {
   )
 }
 
-export default Example1
+export default Example2
