@@ -5,7 +5,7 @@ import Example2 from './Example2'
 const App = () => {
   return (
     <div className='App'>
-      <Example1/>
+      <Example2/>
     </div>
   )
 }
