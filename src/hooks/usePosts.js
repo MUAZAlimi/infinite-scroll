@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getPostsPage } from "../api/axios";
+import { getPostsPage } from "../axios";
 
 const usePosts = (pageNum = 1) => {
     const [result, setResult] = useState([]);
