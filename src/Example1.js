@@ -15,7 +15,7 @@ const Example1 = () => {
 
   const content = result.map((post, i) => {
     if(result.length === i + 1) {
-      
+
     }
     return <Post key={post.id} post={post}/>
   })
@@ -27,6 +27,8 @@ const Example1 = () => {
             <br/>
             &infin;  Ex. 1 - React Only
         </h1>
+
+        {content}
 
         <p className='center'>
             Loading more post...
