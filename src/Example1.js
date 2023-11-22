@@ -3,6 +3,7 @@ import { useState, useRef, useCallback } from "react"
 import usePosts from "./hooks/usePosts"
 import { confirmAlert } from "react-confirm-alert"
 import  'react-confirm-alert/src/react-confirm-alert.css'
+import Post from "./Post"
 
 const Example1 = () => {
   const [pageNum, setPageNum] = useState(1)
