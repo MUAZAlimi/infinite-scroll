@@ -11,7 +11,21 @@ const Example1 = () => {
 
   if (isError) return <p className="center"> Error : {error.message}</p>
 
-  const lastPostRef = useRef();
+  const intObserver = useRef();
+
+  const lastPostRef = useCallback((post) => {
+    if(loading) return;
+
+    if(intObserver.current) intObserver.current.disconnect();
+
+    intObserver.current = new IntersectionObserver((post) => {
+      if (post[0].isIntersecting && hasNextPage)
+        console.log("we are near the last post")
+      setPageNum(prev => prev + 1);
+    })
+
+    if(post) intObserver.current.observe(post)
+  }, [loading, hasNextPage])
 
   const content = result.map((post, i) => {
     if(result.length === i + 1) {
